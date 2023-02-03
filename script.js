@@ -88,21 +88,27 @@ function emptyDisplay() {
 function displaySongInfo() {
 
 // task 8: loop through your images array and display the images to your songs in the correct div. Create three more loops. One for the song names, one for the artists, and a last one for the song links.
-let courses = ["history", "math", "science"];   
-courses.forEach(function(course) {
-  $("#schedule").append("<p>" + course + "</p>");
-});
 
- let imageURLS = [
-"https://i.ytimg.com/vi/E_v8FRAcy1Y/maxresdefault.jpg", 
-"https://i1.sndcdn.com/artworks-rYkavKMuzkSWUyXG-2F3hEg-t500x500.jpg", "https://i1.sndcdn.com/artworks-000627808747-vd16iv-t500x500.jpg", "https://i1.sndcdn.com/artworks-000235892530-rur276-t500x500.jpg", "https://i1.sndcdn.com/artworks-78LayNOjZtymbEzz-OGKryQ-t500x500.jpg"];  
-courses.forEach(function(course) {
-  $("#schedule").append("<p>" + course + "</p>");
-});
-
-  //
-
-
+  //imageURLS, songNames, artistNames, linksSong
+  //songNames, yes but i don't remever. i assume it startes with for()
+//sort of. 
+  console.log(songNames)
+for(let i = 0; i <songNames.length;i++ ){
+displaySong.insertAdjacentHTML('beforeend', `<p>${songNames[i]}</p>`);
+};
+  
+for(let i = 0; i <artistNames.length;i++ ){
+  displayArtist.insertAdjacentHTML('beforeend', `<p>${artistNames[i]}</p>`);
+};
+  
+  for(let i = 0; i <linksSong.length;i++ ){
+  displayLink.insertAdjacentHTML('beforeend', `<p>${linksSong[i]}</p>`);
+};
+  
+  for(let i = 0; i <imageURLS.length;i++ ){
+  displayImage.insertAdjacentHTML('beforeend', `<img src=${imageURLS[i]}>`);
+};
+//
 }
 
 
