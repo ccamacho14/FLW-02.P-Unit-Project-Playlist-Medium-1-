@@ -65,10 +65,20 @@ let linksSong = ["https://www.youtube.com/watch?v=nWKPYs54INA",
 function addSongInfo() {
 
 // task 9: declare a variable to save the user input of the image url. Declare three more variables that save user input: One for the song names, one for the artists, and a last one for the song links.
-
+let userInputURL = image.value;
+let userInputName = songName.value;
+let userInputArtist = artist.value; 
+let userInputLink =songLink.value;
+//let image = document.querySelector(".image");
+//let songName = document.querySelector(".song-name");
+//let artist = document.querySelector(".artist");
+//let songLink = document.querySelector(".song-link");
 
 // task 10: use `.push()` to add each input value to the correct array.
-
+imageURLS.push(userInputURL); 
+songNames.push(userInputName);
+artistNames.push(userInputArtist);
+linksSong.push(userInputLink);
 }
 
 
@@ -102,7 +112,7 @@ for(let i = 0; i <artistNames.length;i++ ){
 };
   
   for(let i = 0; i <linksSong.length;i++ ){
-  displayLink.insertAdjacentHTML('beforeend', `<p>${linksSong[i]}</p>`);
+  displayLink.insertAdjacentHTML('beforeend', `<a href = "${linksSong[i]}">${linksSong[i]}</a>`);
 };
   
   for(let i = 0; i <imageURLS.length;i++ ){
@@ -117,6 +127,7 @@ for(let i = 0; i <artistNames.length;i++ ){
 
 // click event to add and display songs
 add.onclick = function() {
+  emptyDisplay();
   addSongInfo();
   displaySongInfo();
 };
