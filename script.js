@@ -23,19 +23,19 @@ let displayLink = document.querySelector(".display-link");
 
 // task 7: create and populate an array to store your image urls. Create three more arrays. One to store your song names, one for the artists, and a last one for the song links.
 
-let imageURLS = [
-"https://i.ytimg.com/vi/E_v8FRAcy1Y/maxresdefault.jpg", 
-"https://i1.sndcdn.com/artworks-rYkavKMuzkSWUyXG-2F3hEg-t500x500.jpg", "https://i1.sndcdn.com/artworks-000627808747-vd16iv-t500x500.jpg", "https://i1.sndcdn.com/artworks-000235892530-rur276-t500x500.jpg", "https://i1.sndcdn.com/artworks-78LayNOjZtymbEzz-OGKryQ-t500x500.jpg"];
+//let imageURLS = [
+//"https://i.ytimg.com/vi/E_v8FRAcy1Y/maxresdefault.jpg", 
+//"https://i1.sndcdn.com/artworks-rYkavKMuzkSWUyXG-2F3hEg-t500x500.jpg", "https://i1.sndcdn.com/artworks-000627808747-vd16iv-t500x500.jpg", "https://i1.sndcdn.com/artworks-000235892530-rur276-t500x500.jpg", "https://i.ytimg.com/vi/cQKGUgOfD8U/maxresdefault.jpg"];
 
-let songNames = ["your love is my  drug(8bit slowed)","Demise of A Nation","Dancing with the Flames","Revelation","The Mad Pries", ];
+//let songNames = ["your love is my  drug(8bit slowed)","Demise of A Nation","Dancing with the Flames","Revelation","ECHO", ];
 
-let artistNames = ["etxrnall","Secession Studies","Secession Studies","Ross Bugden","Rok Nardin"];
+//let artistNames = ["etxrnall","Secession Studies","Secession Studies","Ross Bugden","Crusher"];
 
-let linksSong = ["https://www.youtube.com/watch?v=nWKPYs54INA", 
-"https://www.youtube.com/watch?v=eduwBgDcMwY", 
-"https://www.youtube.com/watch?v=UauukzbPejE", 
-"https://www.youtube.com/watch?v=0aaopn0jCrk", 
-"https://www.youtube.com/watch?v=sJJ4OoFooak"];
+//let linksSong = ["https://www.youtube.com/watch?v=nWKPYs54INA", 
+//"https://www.youtube.com/watch?v=eduwBgDcMwY", 
+//"https://www.youtube.com/watch?v=UauukzbPejE", 
+//"https://www.youtube.com/watch?v=0aaopn0jCrk", 
+//"https://www.youtube.com/watch?v=cQKGUgOfD8U"];
 
 
 //so the "" are just to keep them seperated? Ah, I got it now. Thanks.
@@ -50,7 +50,41 @@ let linksSong = ["https://www.youtube.com/watch?v=nWKPYs54INA",
 // task 12: create an object for each of your songs.
 // task 13: inside each object, add key/value pairs to store the image url, song name, artist, and song link.
 // task 14: create an array that stores all of the objects.
+let song1 ={
+  img:"https://i.ytimg.com/vi/E_v8FRAcy1Y/maxresdefault.jpg",
+  song:"your love is my drug(8bit slowed)",
+  artist:"",
+  songLink:"https://www.youtube.com/watch?v=nWKPYs54INA",
+};
 
+let song2 ={
+  img:"https://i1.sndcdn.com/artworks-rYkavKMuzkSWUyXG-2F3hEg-t500x500.jpg",
+  song:"Demis of A Nation",
+  artist:"Secession Studies",
+  songLink:"https://www.youtube.com/watch?v=eduwBgDcMwY",
+};
+
+let song3 ={
+  img:"https://i1.sndcdn.com/artworks-000627808747-vd16iv-t500x500.jpg", 
+  song:"Dancing with the Flames",
+  artist:"Secession Studies",
+  songLink:"https://www.youtube.com/watch?v=UauukzbPejE",
+};
+
+let song4 ={
+  img:"https://i1.sndcdn.com/artworks-000235892530-rur276-t500x500.jpg",
+  song:"Revelation",
+  artist:"Ross Bugden",
+  songLink:"https://www.youtube.com/watch?v=0aaopn0jCrk",
+};
+
+let song5 ={
+  img:"https://i.ytimg.com/vi/cQKGUgOfD8U/maxresdefault.jpg",
+  song:"ECHO",
+  artist:"Crusher",
+  songLink:"https://www.youtube.com/watch?v=cQKGUgOfD8U",
+};
+let songList = [song1,song2,song3,song4,song5];
 
 
 //REFACTOR LOOPS DAY 
@@ -80,9 +114,20 @@ songNames.push(userInputName);
 artistNames.push(userInputArtist);
 linksSong.push(userInputLink);
 }
+//test delete
+function removeSongInfo() {
 
 
+let userInputURL = image.value;
+let userInputName = songName.value;
+let userInputArtist = artist.value; 
+let userInputLink =songLink.value;
 
+imageURLS.pop(userInputURL); 
+songNames.pop(userInputName);
+artistNames.pop(userInputArtist);
+linksSong.pop(userInputLink);
+}
 
 /******** this function empties the display divs each time the button is clicked so that your playlist does not repeatedly add the data too many times. Where should this function be placed???********/
 function emptyDisplay() {
@@ -91,10 +136,9 @@ function emptyDisplay() {
   displayArtist.innerHTML = "";
   displayLink.innerHTML = "";
 }
+///////
 
-
-
-
+//////
 function displaySongInfo() {
 
 // task 8: loop through your images array and display the images to your songs in the correct div. Create three more loops. One for the song names, one for the artists, and a last one for the song links.
@@ -102,22 +146,29 @@ function displaySongInfo() {
   //imageURLS, songNames, artistNames, linksSong
   //songNames, yes but i don't remever. i assume it startes with for()
 //sort of. 
-  console.log(songNames)
-for(let i = 0; i <songNames.length;i++ ){
-displaySong.insertAdjacentHTML('beforeend', `<p>${songNames[i]}</p>`);
-};
+//   console.log(songNames)
+// for(let i = 0; i <songNames.length;i++ ){
+// displaySong.insertAdjacentHTML('beforeend', `<p>${songNames[i]}</p>`);
+// };
+  songList.forEach(function(song){
+    displayImage.insertAdjacentHTML('beforeend', `<img src=${song.img}>`)
+    displaySong.insertAdjacentHTML('beforeend', `<p>${song.song}</p>`)
+    displayArtist.insertAdjacentHTML('beforeend', `<p>${song.artist}</p>`)
+  });
+// for(let i = 0; i <artistNames.length;i++ ){
+//   displayArtist.insertAdjacentHTML('beforeend', `<p>${artistNames[i]}</p>`);
+// };
   
-for(let i = 0; i <artistNames.length;i++ ){
-  displayArtist.insertAdjacentHTML('beforeend', `<p>${artistNames[i]}</p>`);
-};
+//   for(let i = 0; i <linksSong.length;i++ ){
+//   displayLink.insertAdjacentHTML('beforeend', `<a href = "${linksSong[i]}">${linksSong[i]}</a>`);
+// };
   
-  for(let i = 0; i <linksSong.length;i++ ){
-  displayLink.insertAdjacentHTML('beforeend', `<a href = "${linksSong[i]}">${linksSong[i]}</a>`);
-};
-  
-  for(let i = 0; i <imageURLS.length;i++ ){
-  displayImage.insertAdjacentHTML('beforeend', `<img src=${imageURLS[i]}>`);
-};
+//   for(let i = 0; i <imageURLS.length;i++ ){
+//   displayImage.insertAdjacentHTML('beforeend', `<img src=${imageURLS[i]}>`);
+    
+// };
+  ///delete
+
 //
 }
 
@@ -134,3 +185,8 @@ add.onclick = function() {
 
 // function call to display stored songs
 displaySongInfo();
+remove.onclick = function() {
+  emptyDisplay();
+removeSongInfo();
+  displaySongInfo();
+};
