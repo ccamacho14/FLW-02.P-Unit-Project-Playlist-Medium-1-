@@ -10,15 +10,15 @@ h1 {
 .display {
   display: flex;
   justify-content: space-around;
-  border-top: 5px solid black;
-  border-bottom: 5px solid black;
+  border-top: 5px solid pink;
+  border-bottom: 5px solid pink;
   padding: 25px
 }
 
 .heading {
   display: flex;
   justify-content: space-around;
-  border-top: 5px solid black;
+  border-top: 5px solid pink;
   background-color: rgba(76, 175, 80, 0.3)
 }
 
@@ -82,9 +82,9 @@ button {
 
 body {
   background: url(https://i.pinimg.com/originals/b8/4f/41/b84f4195a6d33c93d01111287c0c7b7e.jpg);
-color: white;
+color: purple;
 }
 
 h4{
-  color: white;
+  color: pink;
 }

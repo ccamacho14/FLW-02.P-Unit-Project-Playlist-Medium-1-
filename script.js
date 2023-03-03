@@ -18,7 +18,7 @@ let displaySong = document.querySelector(".display-song");
 let displayArtist = document.querySelector(".display-artist");
 let displayImage = document.querySelector(".display-image");
 let displayLink = document.querySelector(".display-link");
-
+let displayTrash = document.querySelector(".display-trash");
 
 
 // task 7: create and populate an array to store your image urls. Create three more arrays. One to store your song names, one for the artists, and a last one for the song links.
@@ -53,36 +53,36 @@ let displayLink = document.querySelector(".display-link");
 let song1 ={
   img:"https://i.ytimg.com/vi/E_v8FRAcy1Y/maxresdefault.jpg",
   song:"your love is my drug(8bit slowed)",
-  artist:"",
-  songLink:"https://www.youtube.com/watch?v=nWKPYs54INA",
+  artist:"etxrnall",
+  link:"https://www.youtube.com/watch?v=nWKPYs54INA",
 };
 
 let song2 ={
   img:"https://i1.sndcdn.com/artworks-rYkavKMuzkSWUyXG-2F3hEg-t500x500.jpg",
-  song:"Demis of A Nation",
+  song:"Demise of A Nation",
   artist:"Secession Studies",
-  songLink:"https://www.youtube.com/watch?v=eduwBgDcMwY",
+  link:"https://www.youtube.com/watch?v=eduwBgDcMwY",
 };
 
 let song3 ={
   img:"https://i1.sndcdn.com/artworks-000627808747-vd16iv-t500x500.jpg", 
   song:"Dancing with the Flames",
   artist:"Secession Studies",
-  songLink:"https://www.youtube.com/watch?v=UauukzbPejE",
+  link:"https://www.youtube.com/watch?v=UauukzbPejE",
 };
 
 let song4 ={
   img:"https://i1.sndcdn.com/artworks-000235892530-rur276-t500x500.jpg",
   song:"Revelation",
   artist:"Ross Bugden",
-  songLink:"https://www.youtube.com/watch?v=0aaopn0jCrk",
+  link:"https://www.youtube.com/watch?v=0aaopn0jCrk",
 };
 
 let song5 ={
   img:"https://i.ytimg.com/vi/cQKGUgOfD8U/maxresdefault.jpg",
   song:"ECHO",
   artist:"Crusher",
-  songLink:"https://www.youtube.com/watch?v=cQKGUgOfD8U",
+  link:"https://www.youtube.com/watch?v=cQKGUgOfD8U",
 };
 let songList = [song1,song2,song3,song4,song5];
 
@@ -92,10 +92,6 @@ let songList = [song1,song2,song3,song4,song5];
 // task 16: update your `.push()` so the input object is added to your array of objects.
 // task 17: update your loops based on your new array of objects.
 
-
-
-
-
 function addSongInfo() {
 
 // task 9: declare a variable to save the user input of the image url. Declare three more variables that save user input: One for the song names, one for the artists, and a last one for the song links.
@@ -103,6 +99,14 @@ let userInputURL = image.value;
 let userInputName = songName.value;
 let userInputArtist = artist.value; 
 let userInputLink =songLink.value;
+  let info ={
+    img:userInputURL,
+  song:userInputName,
+  artist:userInputArtist,
+  link:userInputLink,
+    }
+    songList.push(info)
+  displaySongInfo();
 //let image = document.querySelector(".image");
 //let songName = document.querySelector(".song-name");
 //let artist = document.querySelector(".artist");
@@ -114,20 +118,8 @@ songNames.push(userInputName);
 artistNames.push(userInputArtist);
 linksSong.push(userInputLink);
 }
-//test delete
-function removeSongInfo() {
 
 
-let userInputURL = image.value;
-let userInputName = songName.value;
-let userInputArtist = artist.value; 
-let userInputLink =songLink.value;
-
-imageURLS.pop(userInputURL); 
-songNames.pop(userInputName);
-artistNames.pop(userInputArtist);
-linksSong.pop(userInputLink);
-}
 
 /******** this function empties the display divs each time the button is clicked so that your playlist does not repeatedly add the data too many times. Where should this function be placed???********/
 function emptyDisplay() {
@@ -150,11 +142,19 @@ function displaySongInfo() {
 // for(let i = 0; i <songNames.length;i++ ){
 // displaySong.insertAdjacentHTML('beforeend', `<p>${songNames[i]}</p>`);
 // };
-  songList.forEach(function(song){
+  
+  songList.forEach(function(song, index){	
+		let songDelete = function(idx){
+			songList.splice(idx,1)
+		}
     displayImage.insertAdjacentHTML('beforeend', `<img src=${song.img}>`)
     displaySong.insertAdjacentHTML('beforeend', `<p>${song.song}</p>`)
     displayArtist.insertAdjacentHTML('beforeend', `<p>${song.artist}</p>`)
+    displayLink.insertAdjacentHTML('beforeend', 
+    `<a href = "${song.link}"target="_blank">${song.song}</a>`);
+    // displayTrash.insertAdjacentHTML('beforeend',`<button onclick=songDelete(${index})">Delete</button>`)
   });
+
 // for(let i = 0; i <artistNames.length;i++ ){
 //   displayArtist.insertAdjacentHTML('beforeend', `<p>${artistNames[i]}</p>`);
 // };
@@ -185,8 +185,4 @@ add.onclick = function() {
 
 // function call to display stored songs
 displaySongInfo();
-remove.onclick = function() {
-  emptyDisplay();
-removeSongInfo();
-  displaySongInfo();
-};
+
